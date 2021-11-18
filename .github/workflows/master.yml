@@ -1,0 +1,21 @@
+name: Build EpiData Maven Parent Pom
+
+on: push
+
+env:
+  PARENT_VERSION: "1.0"
+
+jobs:
+  all:
+    name: Build Parent
+    runs-on: self-hosted
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Update Version
+        run: mvn versions:set -DnewVersion=$PARENT_VERSION.$GITHUB_RUN_NUMBER
+
+      - name: Deploy
+        run: mvn clean deploy
