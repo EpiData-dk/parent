@@ -38,5 +38,5 @@ jobs:
               }
             ]'
 
-      - name: Deploy
-        run: mvn clean deploy
+      - name: Deploy (well, not really but install)
+        run: mvn clean install
